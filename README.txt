@@ -4,18 +4,6 @@ A suite of python functions to simplify common LDAP administration tasks with py
 
 Summary of currently included functions
 ---------------------------------------
-seconds_since_epoch
-	Return the number of seconds since the epoch (1/1/70)
-days_since_epoch
-	Return the integer number of days since the epoch (1/1/70)
-days_to_pwd_expiration
-	Determine number of days remaining until a user's password will expire
-generate_pwd
-	Generate a random password for a new user
-generate_ssha
-	Generate a SSHA version of a password
-generate_sambaNTPassword
-	Generate a Samba NT version of a password
 initialize
 	Initializes a connection to an LDAP server, using the local server by default
 login
@@ -53,3 +41,15 @@ get_group_of_groups_members
 update_group_of_groups_membership
 	Update the membership of a group of groups
 	Add a given group as a member if it's not one already
+generate_pwd
+	Generate a random password for a new user
+generate_ssha
+	Generate a SSHA version of a password
+generate_sambaNTPassword
+	Generate a Samba NT version of a password
+seconds_since_epoch
+	Return the number of seconds since the epoch (1/1/70)
+days_since_epoch
+	Return the integer number of days since the epoch (1/1/70)
+days_to_pwd_expiration
+	Determine number of days remaining until a user's password will expire
