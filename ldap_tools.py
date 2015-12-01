@@ -11,10 +11,8 @@ import time
 import string
 import random
 import ldap
-import base64, hashlib, os	#For generating ssha passwords
-from pprint import pprint	#For printing dictionaries
-from getpass import getpass	#For prompting for passwords
-from datetime import datetime
+import base64, hashlib, os	#To generate ssha passwords
+from getpass import getpass	#To prompt for passwords
 
 
 def seconds_since_epoch():
