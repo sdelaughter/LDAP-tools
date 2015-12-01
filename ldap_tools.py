@@ -144,7 +144,7 @@ def initialize(server='ldapi://'):
 	return con
 	
 	
-def login(con, base_dn='ou=people,dc=org', max_attempts=3):
+def login(con, base_dn='dc=org', max_attempts=3):
 	"""Prompts for a dn and password, and uses them to bind to LDAP.
 	Uses anonymous authentication if no username is entered.
 	Forces a sys.exit() after some number of unsuccessful login attempts.
@@ -176,7 +176,7 @@ def login(con, base_dn='ou=people,dc=org', max_attempts=3):
 			return
 		else:
 			if('=' not in username):
-				dn = ('uid=' + str(username) + ',' + str(base_dn))
+				dn = ('uid=' + str(username) + ',ou=people,' + str(base_dn))
 			else:
 				dn = username
 			print('dn: ' + str(dn))
@@ -629,7 +629,7 @@ def get_group_of_groups_members(con, cn):
 	return members
 	
 	
-def update_group_of_groups_membership(con, parent_cn, cn, base_dn='ou=groups,dc=org'):
+def update_group_of_groups_membership(con, parent_cn, cn, base_dn='dc=org'):
 	"""Update the membership of a group of groups
 	Add a given group as a member if it's not one already
 	
@@ -653,11 +653,11 @@ def update_group_of_groups_membership(con, parent_cn, cn, base_dn='ou=groups,dc=
 	"""
 	members = get_group_of_groups_members(con, parent_cn)
 			
-	dn = ('cn=' + str(cn) + ',' + str(base_dn))
+	dn = ('cn=' + str(cn) + ',ou=groups,' + str(base_dn))
 	if(not(dn in members)):
 		members.append(dn)
 		attr = 'member'
-		parent_dn = ('cn=' + str(parent_cn) + ',' + str(base_dn))
+		parent_dn = ('cn=' + str(parent_cn) + ',ou=groups,' + str(base_dn))
 		replace_attribute(con, parent_dn, attr, members)
 		logging.info('Added member to parent group: ' + str(parent_cn))
 		logging.info('               New member is: ' + str(cn))
