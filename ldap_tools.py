@@ -532,7 +532,7 @@ def check_for_existing_group(con, cn):
 
 
 def get_group_members(con, cn):
-	"""Get the members of an LDAP group
+	"""Get the members of a posix group
 	
 	Parameters
 	----------
