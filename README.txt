@@ -1,6 +1,11 @@
 #LDAP-tools
 A suite of python functions to simplify common LDAP administration tasks with python-ldap
 
+WARNING: Some functions require organization-specific input, such as a base dn and SambaSID prefix.
+While you can pass your organizations' values to these functions, it's recommended that you modify the default values instead.
+Future updates may include a simpler way to do this without having to modify multiple function definitions.
+You can find these default definitions by searching for "base_dn=" and "samba_prefix="
+
 
 Summary of currently included functions
 ---------------------------------------
