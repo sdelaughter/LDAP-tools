@@ -1,10 +1,10 @@
 #LDAP-tools
 A suite of python functions to simplify common LDAP administration tasks with python-ldap
 
-WARNING: Some functions require organization-specific input, such as a base dn and SambaSID prefix.
+WARNING: Some functions require organization-specific input, specifically a base dn and SambaSID prefix.
 While you can pass your organizations' values to these functions, it's recommended that you modify the default values instead.
 Future updates may include a simpler way to do this without having to modify multiple function definitions.
-You can find these default definitions by searching for "base_dn=" and "samba_prefix="
+You can find the places where these defaults are defined by searching for "base_dn=" and "samba_prefix="
 If your schema doesn't use ou=people for users and ou=groups for groups, you'll need to modify some of the functions more extensively to make them usable.
 
 
