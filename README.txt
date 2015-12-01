@@ -5,6 +5,7 @@ WARNING: Some functions require organization-specific input, such as a base dn a
 While you can pass your organizations' values to these functions, it's recommended that you modify the default values instead.
 Future updates may include a simpler way to do this without having to modify multiple function definitions.
 You can find these default definitions by searching for "base_dn=" and "samba_prefix="
+If your schema doesn't use ou=people for users and ou=groups for groups, you'll need to modify some of the functions more extensively to make them usable.
 
 
 Summary of currently included functions
