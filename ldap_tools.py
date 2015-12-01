@@ -11,10 +11,9 @@ import time
 import string
 import random
 import ldap
-import ldaphelper as ldaph				#A function for processing ldapsearch results, and a class to manage them
-import base64, hashlib, os				#For generating ssha passwords
-from pprint import pprint				#For printing dictionaries
-from getpass import getpass				#For prompting for passwords
+import base64, hashlib, os	#For generating ssha passwords
+from pprint import pprint	#For printing dictionaries
+from getpass import getpass	#For prompting for passwords
 from datetime import datetime
 
 
