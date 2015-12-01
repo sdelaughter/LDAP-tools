@@ -341,7 +341,7 @@ def next_available_uid(con):
 	return uid
 
 
-def next_available_sid(con, prefix='S-1-5-21-4000000000-1200000000-4000000000-'):
+def next_available_sid(con, samba_prefix='S-1-5-21-4000000000-1200000000-4000000000-'):
 	"""Determine the next available sambaSID number in the LDAP database
 	Somewhat slow since it must check every single account with a sambaSID
 	
@@ -349,8 +349,8 @@ def next_available_sid(con, prefix='S-1-5-21-4000000000-1200000000-4000000000-')
 	----------
 	con : LDAPObject
 		Create with initialize()
-	(optional) prefix : string
-		The SID prefix
+	(optional) samba_prefix : string
+		The SambaSID prefix
 		You should change the default value to match your orginization's own SID prefix
 	
 	Returns
@@ -360,7 +360,7 @@ def next_available_sid(con, prefix='S-1-5-21-4000000000-1200000000-4000000000-')
 	
 	"""
 	
-	num_hyphens=prefix.count('-')
+	num_hyphens=samba_prefix.count('-')
 	existing_sidNumbers = []
 	identifier = 'sambaSID=*'
 	attrs = ['sambaSID']
@@ -377,7 +377,7 @@ def next_available_sid(con, prefix='S-1-5-21-4000000000-1200000000-4000000000-')
 			if len(sids) is (num_hyphens+1):
 				existing_sidNumbers.append(int(sids[num_hyphens]))
 	next_available = ((max(existing_sidNumbers)) + 1)
-	sid = (str(prefix) + str(next_available))
+	sid = (str(samba_prefix) + str(next_available))
 	return sid
 
 
@@ -432,7 +432,7 @@ def increment_uid(uid):
 	return new
 	
 
-def increment_sid(sid, prefix='S-1-5-21-4000000000-1200000000-4000000000-'):
+def increment_sid(sid, samba_prefix='S-1-5-21-4000000000-1200000000-4000000000-'):
 	"""Increment an SID number
 	Faster than rerunning next_available_sid()
 	
@@ -440,6 +440,10 @@ def increment_sid(sid, prefix='S-1-5-21-4000000000-1200000000-4000000000-'):
 	----------
 	sid : string
 		Generally the SID number that was just assigned to a user
+	(optional) : samba_prefix
+		The SambaSID prefix
+		You should change the default value to match your orginization's own SID prefix
+		
 	
 	Returns
 	-------
@@ -448,9 +452,9 @@ def increment_sid(sid, prefix='S-1-5-21-4000000000-1200000000-4000000000-'):
 		Generally the new next-avialable SID number
 	
 	"""
-	current = sid.split(str(prefix))[1]
+	current = sid.split(str(samba_prefix))[1]
 	new = ((int(current)) + 1)
-	new = (str(prefix) + str(new))
+	new = (str(samba_prefix) + str(new))
 	return new
 
 
