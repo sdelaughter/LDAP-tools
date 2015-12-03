@@ -10,9 +10,9 @@ If your schema doesn't use ou=people for users and ou=groups for groups, you'll 
 
 Summary of currently included functions
 ---------------------------------------
-initialize
-	Initializes a connection to an LDAP server, using the local server by default
-login
+- initialize
+	- Initializes a connection to an LDAP server, using the local server by default
+- login
 	Prompts for a dn and password, and uses them to bind to LDAP.
 	Uses anonymous authentication if no username is entered.
 	Forces a sys.exit() after some number of unsuccessful login attempts.
